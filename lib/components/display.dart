@@ -4,7 +4,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 class Display extends StatelessWidget {
   final String text;
 
-  Display({super.key, required this.text});
+  const Display(this.text, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class Display extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(1),
               child: AutoSizeText(
                 text,
                 minFontSize: 20,
@@ -27,11 +27,10 @@ class Display extends StatelessWidget {
                 style: const TextStyle(
                   fontWeight: FontWeight.w100,
                   decoration: TextDecoration.none,
-                  fontSize: 80,
                   color: Colors.white,
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
