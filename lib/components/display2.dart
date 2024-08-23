@@ -9,7 +9,7 @@ class Display2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      flex: 0.5,
+      flex: 1,
       child: Container(
         color: const Color.fromRGBO(48, 48, 48, 1),
         child: Column(

@@ -20,7 +20,7 @@ class _CalculatorState extends State<Calculator> {
   _onPressed(String command) {
     setState(() {
       memory.applyCommand(command);
-      memory2.applyCommand2(command);
+      memory2.applyCommand(command);
     });
   }
 

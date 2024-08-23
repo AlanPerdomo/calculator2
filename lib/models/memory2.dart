@@ -1,24 +1,40 @@
 class Memory2 {
-  String _value = '0';
+  static const operations = ['%', '/', 'x', '-', '+', '='];
 
-  void applyCommand2(String command) {
+  final _buffer = [0.0, 0.0];
+  int _bufferIndex = 0;
+  late String operation;
+  String _value = '0';
+  bool _wipeValue = false;
+
+  void applyCommand(String command) {
     if (command == 'AC') {
-      _allClear2();
-    } else if (_value == '0') {
-      _value = command;
-    } else if (command == '%' ||
-        command == '/' ||
-        command == 'x' ||
-        command == '-' ||
-        command == '+' ||
-        command == '=') {
-      _value += ' $command ';
+      _allClear();
+    } else if (operations.contains(command)) {
+      _setOperation(command);
     } else {
-      _value += command;
+      _addDigit(command);
     }
   }
 
-  _allClear2() {
+  _setOperation(String newOperation) {
+    _wipeValue = true;
+  }
+
+  _addDigit(String digit) {
+    final isDot = digit == '.';
+    final wipeValue = (_value == '0' && !isDot) || _wipeValue;
+
+    if (isDot && _value.contains('.')) {
+      return;
+    }
+
+    final currentValue = wipeValue ? '' : _value;
+    _value = currentValue + digit;
+    _wipeValue = false;
+  }
+
+  _allClear() {
     _value = '0';
   }
 
